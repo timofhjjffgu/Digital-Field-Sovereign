@@ -4,18 +4,17 @@ import random
 from fpdf import FPDF
 import base64
 
-# --- إعدادات الصفحة والهوية ---
-st.set_page_config(page_title="Sovereign Core v3", page_icon="🌾", layout="wide")
+# --- إعدادات الهوية السيادية ---
+st.set_page_config(page_title="Sovereign Core v3.1", page_icon="🌾", layout="wide")
 
-# --- دمج صورة الخلفية (الماتريكس الزراعية) ---
-# رابط الصورة التي قمنا بتوليدها
+# --- رابط صورة الماتريكس (الخلفية) ---
 IMG_URL = "https://replicate.delivery/pbxt/P2W1qf1oH3h3G0pU7iJ1R9K1b5pG7nU6f4C3G2k3B5w4A6D5A/output_1.png"
 
+# --- تصميم الواجهة السيبرانية ---
 st.markdown(f"""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Cairo:wght@400;700&display=swap');
     
-    /* خلفية الماتريكس المتحركة */
     .stApp {{
         background-image: url("{IMG_URL}");
         background-size: cover;
@@ -23,107 +22,59 @@ st.markdown(f"""
         background-attachment: fixed;
     }}
     
-    /* تنسيق العناصر العائمة */
-    .stApp > header {{ display: none; }}
-    .main {{ background-color: rgba(5, 5, 5, 0.6); color: white; font-family: 'Cairo', sans-serif; }}
+    .main {{ background-color: rgba(0, 0, 0, 0.6); color: #00f2ff; font-family: 'Cairo', sans-serif; }}
     
-    /* تصميم Cyberpunk الاحترافي */
+    /* تصميم الصناديق الزجاجية */
     .cyber-box {{ 
-        background: rgba(10, 10, 30, 0.7); 
-        border: 1px solid #7000ff; 
-        padding: 20px; 
-        border-radius: 15px; 
-        box-shadow: 0 0 15px rgba(112, 0, 255, 0.5);
-        backdrop-filter: blur(5px);
+        background: rgba(10, 10, 30, 0.8); 
+        border: 2px solid #7000ff; 
+        padding: 25px; 
+        border-radius: 20px; 
+        box-shadow: 0 0 20px rgba(112, 0, 255, 0.6);
+        backdrop-filter: blur(8px);
     }}
     
-    .stMetric {{ color: #00f2ff; }}
+    /* أزرار الطاقة */
+    .stButton>button {{ 
+        width: 100%; 
+        border-radius: 25px; 
+        background: linear-gradient(90deg, #7000ff, #00f2ff); 
+        color: white; 
+        border: none; 
+        font-family: 'Orbitron', sans-serif;
+        font-weight: bold;
+        height: 50px;
+        transition: 0.4s;
+    }}
+    .stButton>button:hover {{ transform: scale(1.05); box-shadow: 0 0 30px #00f2ff; }}
     
-    /* تنسيق الدردشة الـ AI */
-    .chat-box {{ background: rgba(0, 0, 0, 0.8); border: 1px solid #bc13fe; padding: 10px; border-radius: 10px; margin-bottom: 5px; }}
-    .user-msg {{ color: #00f2ff; }}
-    .ai-msg {{ color: #bc13fe; font-weight: bold; }}
+    /* المحادثة الذكية */
+    .chat-container {{ height: 300px; overflow-y: auto; padding: 10px; }}
+    .ai-bubble {{ background: rgba(188, 19, 254, 0.2); border-left: 4px solid #bc13fe; padding: 10px; border-radius: 5px; margin: 10px 0; }}
+    .user-bubble {{ background: rgba(0, 242, 255, 0.1); border-right: 4px solid #00f2ff; padding: 10px; border-radius: 5px; margin: 10px 0; text-align: right; }}
     
-    /* أزرار Cyber Buttons */
-    .stButton>button {{ width: 100%; border-radius: 20px; background: linear-gradient(45deg, #7000ff, #00f2ff); color: white; border: none; transition: 0.3s; font-family: 'Orbitron', sans-serif;}}
-    .stButton>button:hover {{ transform: scale(1.03); box-shadow: 0 0 25px #00f2ff; }}
-    
-    /* العناوين السيادية */
-    h1 {{ text-shadow: 0 0 15px #7000ff; color: #ffffff; text-align: center; font-family: 'Orbitron', sans-serif; }}
+    h1 {{ text-shadow: 0 0 20px #7000ff; color: #ffffff; text-align: center; font-family: 'Orbitron', sans-serif; letter-spacing: 2px; }}
 </style>
 """, unsafe_allow_html=True)
 
-# --- نظام الجلسة ---
+# --- إدارة الحالة (Session State) ---
 if 'messages' not in st.session_state:
     st.session_state.messages = []
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
 
-# --- بوابة الدخول السيادية (Security Layer) ---
-if not st.session_state.logged_in:
-    st.markdown("<h1>🌾 SOVEREIGN ACCESS GATE</h1>", unsafe_allow_html=True)
-    st.markdown("<div class='cyber-box' style='width: 50%; margin: auto; text-align: center;'>", unsafe_allow_html=True)
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        pwd = st.text_input("ENTER COMMAND (حديديها):", type="password")
-        if st.button("ACTIVATE CORE"):
-            if pwd == "حديديها":
-                st.session_state.logged_in = True
-                st.rerun()
-            else:
-                st.error("INTERFERENCE DETECTED. ACCESS DENIED.")
-    st.markdown("</div>", unsafe_allow_html=True)
-else:
-    # --- الواجهة الرئيسية (The Cyber Core) ---
-    st.markdown("<h1>🔮 NUCLEAR OPERATIONS CENTER | ABD AL-KHALIQ</h1>", unsafe_allow_html=True)
-    st.markdown("<h4 style='text-align: center; color: #bc13fe;'>نظام الماتريكس الزراعية - وهران 2026</h4>", unsafe_allow_html=True)
-    
-    st.write("---")
-    
-    col_metrics, col_chat = st.columns([2, 1])
-    
-    with col_metrics:
-        # قسم الإحصائيات في Cyber Boxes
-        st.markdown("<div class='cyber-box'>", unsafe_allow_html=True)
-        st.subheader("🌐 أصول الحقل الرقمي")
-        m1, m2, m3 = st.columns(3)
-        m1.metric("Status", "ENCRYPTED", "99.9%")
-        m2.metric("Semiotic ETH", "12.4", "+1.2%")
-        m3.metric("AI Agents", "Active", "v3.1")
-        st.markdown("</div>", unsafe_allow_html=True)
-        
-        st.write("---")
-        
-        # قسم إصدار الشهادات
-        with st.expander("📝 صكوك الملكية الرقمية (NFT Certificates)"):
-            c_name = st.text_input("اسم المستثمر الجديد:")
-            c_type = st.selectbox("نوع الأصل:", ["NFT Land Oran #442", "Simei Seed v1.2"])
-            if st.button("توليد العقد المشفر"):
-                st.success(f"تم توليد العقد للأخ {c_name} بنجاح!")
-    
-    with col_chat:
-        st.markdown("<div class='cyber-box'>", unsafe_allow_html=True)
-        st.markdown("### 🤖 مساعد جيمني (AI Chatbot)")
-        
-        # عرض الرسائل
-        for msg in st.session_state.messages:
-            role = "ai-msg" if msg["role"] == "assistant" else "user-msg"
-            st.markdown(f'<div class="chat-box"><span class="{role}">{msg["content"]}</span></div>', unsafe_allow_html=True)
-            
-        user_input = st.chat_input("اسأل الوكيل عن الأراضي...")
-        if user_input:
-            st.session_state.messages.append({"role": "user", "content": user_input})
-            # رد الذكاء الاصطناعي (محاكاة جيمني)
-            with st.spinner("تفكير سيادي..."):
-                time.sleep(1)
-                ai_reply = f"تحليل بيانات جيمني لـ '{user_input}': الأراضي في وهران مستقرة وتحت حماية Mirage Vault."
-                st.session_state.messages.append({"role": "assistant", "content": ai_reply})
-                st.rerun()
-        st.markdown("</div>", unsafe_allow_html=True)
-
-    # --- التذييل السيادي ---
-    st.sidebar.markdown("### 🛡️ Mirage Control")
-    if st.sidebar.button("LOGOUT"):
-        st.session_state.logged_in = False
-        st.rerun()
-    st.sidebar.caption("حقوق الملكية لـ عبد الخالق © 2026")
+# --- وظيفة توليد الشهادة السيادية ---
+def generate_pdf(name, asset):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_fill_color(10, 10, 30)
+    pdf.rect(0, 0, 210, 297, 'F')
+    pdf.set_text_color(255, 255, 255)
+    pdf.set_font("helvetica", 'B', 20)
+    pdf.cell(0, 20, "SOVEREIGN OWNERSHIP CERTIFICATE", ln=True, align='C')
+    pdf.ln(20)
+    pdf.set_font("helvetica", size=14)
+    pdf.cell(0, 10, f"Holder Name: {name}", ln=True)
+    pdf.cell(0, 10, f"Asset ID: {asset}", ln=True)
+    pdf.cell(0, 10, f"Sector: Oran Digital Field", ln=True)
+    pdf.cell(
