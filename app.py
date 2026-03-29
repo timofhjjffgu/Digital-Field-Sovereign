@@ -3,7 +3,7 @@ import pandas as pd
 import random
 import time
 
-# --- Page Configuration ---
+# --- إعدادات الصفحة الاحترافية ---
 st.set_page_config(
     page_title="الحقل الرقمي السيادي | وهران",
     page_icon="🌾",
@@ -11,98 +11,124 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# --- Custom CSS for Styling ---
+# --- تنسيق CSS مخصص لتحسين المظهر ---
 st.markdown("""
     <style>
-    .main { background-color: #f0f2f6; }
-    .stMetric { background-color: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #e0e0e0; }
-    div[data-testid="stExpander"] { background-color: white; border-radius: 10px; }
+    .main { background-color: #f7f9fc; }
+    .stMetric { background-color: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #e0e0e0; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+    div[data-testid="stExpander"] { background-color: white; border-radius: 10px; border: 1px solid #e0e0e0;}
+    .css-1avcm0n {font-weight: bold;}
+    .land-card { border: 1px solid #e0e0e0; padding: 15px; border-radius: 10px; background-color: white; margin-bottom: 20px;}
+    .seed-card { text-align: center; border: 2px solid #57ca85; padding: 10px; border-radius: 8px; background-color: #e8f7ee; }
     </style>
     """, unsafe_allow_html=True)
 
-# --- Header Section ---
-st.title("🌾 منصة الحقل الرقمي السيادي")
-st.info("نظام متكامل لإدارة الأراضي والبذور الرقمية (NFT Farming & Metaverse)")
+# --- القسم الرئيسي: العنوان والشعار الفني ---
+st.title("🌾 منصة الحقل الرقمي السيادي | وهران")
+st.markdown("##### نموذج أولي للزراعة الافتراضية السيبرانية (Cybergpoyonics) على البلوك تشين")
 st.markdown("---")
 
-# --- Key Metrics (Market Data) ---
+# --- محاكاة مرئية خارج الصندوق: "شاشة التحكم في البيئة" ---
+# هذه الصورة هي "محاكاة" للمزرعة من منظور طائرة بدون طيار
+st.image("https://replicate.delivery/pbxt/P2W1qf1oH3h3G0pU7iJ1R9K1b5pG7nU6f4C3G2k3B5w4A6D5A/output_1.png", use_container_width=True, caption="محاكاة بانورامية: منظور طائرة بدون طيار فوق الحقل الرقمي في وهران (التربة السيميائية المضاءة بالليزر) - تم عرض الأصول الرقمية المربوطة")
+
+# --- القسم الأول: إحصائيات السوق الرقمي الحية ---
 col1, col2, col3, col4 = st.columns(4)
 with col1:
-    st.metric(label="إجمالي الأراضي", value="2,500 NFT", delta="محدودة")
+    st.metric(label="الأراضي المباعة (NFT Land)", value="1,240", delta="+12 NFT (24h)")
 with col2:
-    st.metric(label="سعر الأرض الأدنى", value="0.45 ETH", delta="+2.3%")
+    st.metric(label="سعر الأرض الأدنى (Floor Price)", value="0.75 ETH", delta="+8%")
 with col3:
-    st.metric(label="البذور المتاحة", value="12,340", delta="طلب مرتفع")
+    st.metric(label="البذور النشطة (Cyber-Seeds)", value="8,500", delta="طلب مرتفع")
 with col4:
-    st.metric(label="قوة التشفير", value="95.5 MHz", delta="حماية كاملة")
+    st.metric(label="قوة حماية Mirage Vault", value="95.5 MHz", delta="كاملة")
 
-# --- Sidebar (Mirage Vault) ---
+# --- شريط جانبي لنظام Mirage Vault (محدث) ---
 with st.sidebar:
+    st.image("https://cdn-icons-png.flaticon.com/512/2092/2092663.png", width=80)
     st.header("🗄️ Mirage Vault")
-    st.write("حالة الاتصال: **نشط**")
-    st.success("تم تفعيل بروتوكول البلوك تشين")
-    st.markdown("---")
+    st.info("🔓 تم تفعيل بروتوكول البلوك تشين - الجزائر")
     
-    st.subheader("إحصائيات المحفظة")
-    st.write("🔹 الرصيد: **12.4 ETH**")
-    st.write("📍 الموقع: **وهران، الجزائر**")
+    st.write("---")
+    st.subheader("إحصائيات محفظتك")
+    st.write("🔹 الرصيد الحالي: **12.4 ETH**")
+    st.write("📍 الموقع المرتبط: **وهران، الجزائر**")
+    st.write("🚜 الأصول الخاصة: **3 قطع أراضي / 20 بذرة**")
     
     st.markdown("---")
-    if st.button("تحديث البيانات"):
-        with st.spinner('جاري مزامنة الأصول...'):
-            time.sleep(1.5)
+    if st.button("تحديث بيانات الشبكة"):
+        with st.spinner('جاري مزامنة العوالم السيميائية...'):
+            time.sleep(2)
             st.rerun()
 
-# --- Main Content Tabs ---
-tab_land, tab_seeds, tab_harvest = st.tabs(["🗺️ سوق الأراضي", "🌱 مختبر البذور", "💰 تداول المحاصيل"])
+# --- القسم الثاني: إدارة الأصول (Tabs) مع صور المحاكاة ---
+tab_land, tab_seeds, tab_market = st.tabs(["🗺️ سوق الأراضي (NFT Land)", "🌱 مختبر البذور الإلكترونية", "🛒 تداول المحاصيل"])
 
 with tab_land:
-    st.subheader("الأراضي الرقمية المتاحة (Digital Land Plots)")
-    st.write("اختر قطعة أرض لتملكها وتثبيت ملكيتك على الشبكة.")
+    st.subheader("إدارة قطع الأراضي الرقمية المتاحة")
+    st.write("اختر قطعة أرض لتملكها وتثبيت ملكيتك على الشبكة السيميائية.")
     
     # Grid for Land Cards
     c1, c2 = st.columns(2)
     with c1:
-        with st.expander("📍 قطعة أرض #442 (وهران)"):
+        # محاكاة صورة قطعة الأرض #442 (سيميائية)
+        st.markdown('<div class="land-card">', unsafe_allow_html=True)
+        st.image("https://replicate.delivery/pbxt/P2W1qf1oH3h3G0pU7iJ1R9K1b5pG7nU6f4C3G2k3B5w4A6D5A/output_1.png", caption="📍 محاكاة قطعة #442 (تربة سيميائية مضاءة) - وهران", width=350)
+        st.write("---")
+        with st.expander("📍 تفاصيل قطعة #442"):
             st.write("**النوع:** تربة سيميائية")
-            st.write("**معدل الإنتاج:** 94%")
-            st.button("شراء الآن", key="buy_1")
-            
+            st.write("**معدل الإنتاج:** 98%")
+            st.write("**المالك الحالي:** 0x71...f92 (أنت)")
+        if st.button("عرض شهادة الملكية (NFT)"):
+            st.warning("جاري الاتصال بالعقد الذكي `0xabc123...`")
+        st.markdown('</div>', unsafe_allow_html=True)
+
     with c2:
-        with st.expander("📍 قطعة أرض #443 (القطاع البحري)"):
-            st.write("**النوع:** مائية")
+        # محاكاة صورة قطعة الأرض #443 (مائية)
+        st.markdown('<div class="land-card">', unsafe_allow_html=True)
+        st.image("https://replicate.delivery/pbxt/P2W1qf1oH3h3G0pU7iJ1R9K1b5pG7nU6f4C3G2k3B5w4A6D5A/output_1.png", caption="📍 محاكاة قطعة #443 (مائية سيبرانية مضاءة) - القطاع البحري", width=350)
+        st.write("---")
+        with st.expander("📍 تفاصيل قطعة #443"):
+            st.write("**النوع:** مائية سيبرانية")
             st.write("**معدل الإنتاج:** 88%")
-            st.button("شراء الآن", key="buy_2")
+            st.write("**المالك الحالي:** 0x82...a1c")
+        st.button("شراء الآن", key="buy_2")
+        st.markdown('</div>', unsafe_allow_html=True)
 
 with tab_seeds:
-    st.subheader("نظام البذور الإلكترونية (Digital Seeds)")
-    seed_choice = st.selectbox("اختر البذرة المراد تطويرها:", ["قمح سيميائي", "نخيل مشفر", "بذور الطاقة"])
+    st.subheader("مختبر البذور الإلكترونية (Digital Seeds Lab)")
+    st.write("اختر نوع البذرة المربوطة لزرعها على أرضك.")
     
     col_a, col_b = st.columns([1, 2])
     with col_a:
-        st.write("🧬 **الخصائص الجينية:**")
-        st.write("- النُدرة: **عالية**")
-        st.write("- وقت النمو: **3 أيام**")
+        # محاكاة صورة البذرة السيبرانية المضاءة
+        st.markdown('<div class="seed-card">', unsafe_allow_html=True)
+        st.image("https://replicate.delivery/pbxt/P2W1qf1oH3h3G0pU7iJ1R9K1b5pG7nU6f4C3G2k3B5w4A6D5A/output_1.png", caption="🌱 بذرة القمح السيبرانية (مضاءة بالنيون)", width=200)
+        st.markdown('</div>', unsafe_allow_html=True)
+
     with col_b:
-        st.write("📊 **إحصائيات النمو المتوقع:**")
-        val = random.randint(60, 90)
+        seed_type = st.selectbox("اختر البذرة المراد تطويرها:", ["قمح سيميائي", "نخيل مشفر", "بذور الطاقة"])
+        st.write(f"🧬 **خصائص جينية متقدمة لـ {seed_type}:**")
+        val = random.randint(60, 95)
         st.progress(val, text=f"كفاءة الامتصاص الرقمي: {val}%")
-        if st.button("بدء الزراعة في الحقل"):
-            st.toast("جاري نقل البذرة إلى الأرض المختارة...")
+        st.write(f"- مستوى النُدرة: **عالية (Rare)**")
+        st.write(f"- وقت النمو المتوقع: **3 أيام**")
+        if st.button("بدء عملية الزراعة (Stake Seed)"):
+            st.toast("جاري تأكيد المعاملة على البلوك تشين...")
 
 with tab_harvest:
     st.subheader("سوق المحاصيل والـ NFTs")
-    st.write("قائمة بآخر المحاصيل التي تم حصادها وجاهزة للبيع:")
+    st.write("قائمة بآخر المحاصيل الرقمية التي تم حصادها وجاهزة للبيع كـ NFTs:")
     
     harvest_data = {
-        "المحصول": ["قمح ذهبي", "تمور مشفرة", "زيت سيبراني"],
-        "الكمية": ["500 كجم", "200 كجم", "150 لتر"],
+        "المحصول Digital Harvest": ["قمح ذهبي سيميائي", "تمور مشفرة وهرانية", "رحيق مشفر طاقة"],
+        "الكمية": ["500 وحدة", "200 وحدة", "150 وحدة"],
         "السعر (ETH)": [0.02, 0.05, 0.03]
     }
     df = pd.DataFrame(harvest_data)
     st.dataframe(df, use_container_width=True)
 
-# --- Footer ---
+# --- التذييل الإبداعي (Footer) ---
 st.markdown("---")
-st.markdown("<h4 style='text-align: center;'>هذه البيانات ملكية فكرية مستقلة تحت إدارة رنينك الذري</h4>", unsafe_allow_html=True)
-st.caption("نظام الحقل الرقمي السيادي - الإصدار 1.0.0")
+st.markdown("<h4 style='text-align: center; color: #57ca85;'>تكنولوجيا المستقبل - الجزائرية المستقلة لإدارة الأصول الرقمية</h4>", unsafe_allow_html=True)
+st.caption("نظام الحقل الرقمي السيادي - الإصدار 2.0.0 | تم تطويره وتكييفه تحت إدارة رنينك الذري")
